@@ -1,12 +1,14 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import {getFirestore} from 'firebase/firestore';
+const apikey=process.env.REACT_APP_API_KEY;
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyD2pfNJR7P8cvwMmyZkoRWTX6p8s61LZvo",
+  apiKey:apikey,
   authDomain: "contact-app-69c98.firebaseapp.com",
   projectId: "contact-app-69c98",
   storageBucket: "contact-app-69c98.firebasestorage.app",

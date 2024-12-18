@@ -48,10 +48,6 @@ const Contacts_area = () => {
             <div className='h-full ms-2 bg-[#FFEAAE] w-7/12 flex align-middle justify-start'>
               <div className='flex align-middle justify-center flex-col'>
                 <h1 className='text-3xl'>{list.name}</h1>
-                {console.log(list)}
-                {console.log(list.name)}
-                {console.log(list.id)}
-                {console.log(list.email)}
                 <p className='text-xl'>{list.email}</p>
               </div>
             </div>
