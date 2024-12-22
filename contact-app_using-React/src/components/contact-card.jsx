@@ -15,7 +15,7 @@ const Contact_card = ({list}) => {
     <div className='h-full bg-[#FFEAAE] w-3/12 flex align-middle justify-center'>
       <div className='flex align-middle justify-between w-2/3'>
         <i class="fa-regular fa-pen-to-square md:text-4xl self-center text-3xl"></i>
-        <i class="fa-solid fa-trash md:text-4xl self-center text-blue-700 text-3xl"></i>
+        <i class="fa-solid fa-trash md:text-4xl self-center text-blue-700 text-3xl" onClick={()=>{handleDelete()}}></i>
       </div>
     </div>
   </div>

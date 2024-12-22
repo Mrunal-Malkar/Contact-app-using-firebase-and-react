@@ -6,12 +6,15 @@ import Contacts_area from './components/contacts-area'
 import { ModalContext } from './components/modalcontext'
 
 
+
 function App() {
   const [count, setCount] = useState(0)
-  const[isOpen,setIsOpen]=useState(true);
+  const [clist, setclist] = useState([{ name: "sampleName", id: "01" }]);
+  const[isOpen,setIsOpen]=useState(false);
+  console.log("app.jsx")
   return (
     <>
-  <ModalContext.Provider value={{isOpen,setIsOpen}}>
+  <ModalContext.Provider value={{isOpen,setIsOpen,clist,setclist}}>
   <Upper_area/>
   <Search_area/>
   <Contacts_area/>

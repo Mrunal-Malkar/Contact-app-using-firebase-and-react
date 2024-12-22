@@ -49,9 +49,8 @@ const Contacts_area = () => {
     </div>
     {/* /* this is Modal area */}
 
-    { isOpen  && (
-        <Modal/>
-      )}
+    
+      <Modal/>
 
   </div>
   )
