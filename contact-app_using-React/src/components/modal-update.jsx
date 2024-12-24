@@ -1,29 +1,32 @@
 import React, { useContext } from 'react';
 import { ModalContext } from './modalcontext';
 import ReactDOM from 'react-dom';
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import { collection, addDoc, getDoc } from "firebase/firestore";
+import { Formik, Form, Field } from "formik";
+import { collection, addDoc, getDoc, limitToLast, doc, updateDoc } from "firebase/firestore";
 import {db} from "../config/firebase.js";
+import Modalupdatecontext from './modalupdateContext.jsx';
 import * as Yup from 'yup';
+import { ErrorMessage } from 'formik';
 
-const Modal = () => {
-  const { isOpen, setIsOpen } = useContext(ModalContext);
-  const {clist,setClist}=useContext(ModalContext);
+const Modal_update = ({list}) => {
+//   const { isOpen, setIsOpen } = useContext(ModalContext);
+  // const {clist,setClist}=useContext(ModalContext);
+    const{isEditOpen,setIsEditOpen}=useContext(Modalupdatecontext);
+  
+  if (!isEditOpen) return null;
 
-  if (!isOpen) return null;
 
   const handleSubmit = async (values) => {
     try {
-      const contactRef = await collection(db, "contacts");
-      const docRef = await addDoc(contactRef, values);
+      const contactRef = await doc(db, "contacts",list.id);
+      const docRef = await updateDoc(contactRef, values);
     }
     catch (error) {
       console.log(error);
     }
-    setIsOpen(false);
+    setIsEditOpen(false);
   }
 
-  
   const validationSchemaRequirement = Yup.object().shape({
     name: Yup.string().required('Please enter your name').matches(/^[A-Za-z ]*$/, 'Please enter valid name'),
     email: Yup.string().email('Invalid email address').required('Email is Required')
@@ -31,12 +34,12 @@ const Modal = () => {
 
   return ReactDOM.createPortal(
     <>
-      <Formik initialValues={{ name: '', email: '' }} validationSchema={validationSchemaRequirement} onSubmit={handleSubmit}>
+      <Formik initialValues={{ name:`${list.name}`, email: `${list.email}` }} onSubmit={handleSubmit} validationSchema={validationSchemaRequirement}>
         <Form className="bg-white fixed bottom-0 overflow-hidden z-20 m-auto p-1 rounded-md flex justify-start h-[300px] w-full md:max-w-max-[700px] flex-col">
 
           <div className="h-[20%] flex items-center justify-between px- border-b-2 border-b-gray-400">
-            <h1 className='text-3xl w-[90%] font-bold'>Add new contact</h1>
-            <div onClick={() => { setIsOpen(false) }} className='bg-red-500 px-2 rounded-md'><i class="fa-solid text-3xl fa-xmark"></i></div>
+            <h1 className='text-3xl w-[90%] font-bold'>Edit contact</h1>
+            <div onClick={() => { setIsEditOpen(false) }} className='bg-red-500 px-2 rounded-md'><i class="fa-solid text-3xl fa-xmark"></i></div>
           </div>
 
           <div className="h-[60%] bg-white">
@@ -58,7 +61,7 @@ const Modal = () => {
 
           <div className="h-[20%]">
             <div className='flex justify-center h-full align-middle'>
-              <button name='submit' type='submit' className='bg-gray-300 rounded-md align-middle h-full py-1 font-semibold px-4 text-blue-900 text-xl md:text-2xl'>Add</button>
+              <button name='submit' type='submit' className='bg-gray-300 rounded-md align-middle h-full py-1 font-semibold px-4 text-blue-900 text-xl md:text-2xl'>Update</button>
             </div>
           </div>
         </Form>
@@ -68,4 +71,4 @@ const Modal = () => {
   );
 };
 
-export default Modal;
+export default Modal_update;
