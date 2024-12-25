@@ -7,6 +7,7 @@ import {db} from "../config/firebase.js";
 import Modalupdatecontext from './modalupdateContext.jsx';
 import * as Yup from 'yup';
 import { ErrorMessage } from 'formik';
+import { ToastContainer,toast} from 'react-toastify';
 
 const Modal_update = ({list}) => {
 //   const { isOpen, setIsOpen } = useContext(ModalContext);
@@ -20,6 +21,7 @@ const Modal_update = ({list}) => {
     try {
       const contactRef = await doc(db, "contacts",list.id);
       const docRef = await updateDoc(contactRef, values);
+      toast.success('Contact Updated Successfully');
     }
     catch (error) {
       console.log(error);
@@ -44,7 +46,6 @@ const Modal_update = ({list}) => {
 
           <div className="h-[60%] bg-white">
             <div className='flex flex-col gap-2 justify-start h-[100%]'>
-              {console.log('modal')}
               <div className='flex flex-col h-1/2'>
                 <label htmlFor="name" className='self-center md:text-2xl font-semibold'>Name</label>
                 <Field name="name" placeholder='Enter your NAME' type="text" className=' ps-4 border-2 border-gray-400 bg-gray-100 w-[80%] self-center rounded-md h-[50%]' id="name" />

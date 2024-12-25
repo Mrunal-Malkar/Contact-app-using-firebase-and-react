@@ -3,6 +3,7 @@ import React,{useContext, useState} from 'react'
 import { db } from '../config/firebase';
 import Modal_update from './modal-update';
 import Modalupdatecontext from './modalupdateContext';
+import { toast } from 'react-toastify';
 
 const Contact_card = ({ list }) => {
 // let isEditOpen=false;
@@ -17,6 +18,7 @@ const Contact_card = ({ list }) => {
     try {
       const contactref = await doc(db, "contacts", id);
       await deleteDoc(contactref);
+      toast.success("contact deleted successfully")
     } catch (error) {
       console.log(`document deleting error: ${error}`)
     }

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import './App.css'
 import Upper_area from './components/upper_area'
 import Search_area from './components/search-area'

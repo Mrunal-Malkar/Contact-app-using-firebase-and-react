@@ -5,6 +5,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { collection, addDoc, getDoc } from "firebase/firestore";
 import {db} from "../config/firebase.js";
 import * as Yup from 'yup';
+import { toast } from 'react-toastify';
 
 const Modal = () => {
   const { isOpen, setIsOpen } = useContext(ModalContext);
@@ -16,6 +17,8 @@ const Modal = () => {
     try {
       const contactRef = await collection(db, "contacts");
       const docRef = await addDoc(contactRef, values);
+      setClist(contactRef);
+      toast.success('Contact Added Successfully');
     }
     catch (error) {
       console.log(error);

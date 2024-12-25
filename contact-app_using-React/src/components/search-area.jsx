@@ -5,7 +5,13 @@ import { ModalContext } from './modalcontext'
 const Search_area = () => {
 
   const {isOpen,setIsOpen}=useContext(ModalContext);
+  const {clist,setclist}=useContext(ModalContext);
 
+  const clistchange=(e)=>{
+    // let newlist={clist.filter((list)=>list.name.toLowerCase().includes(e.target.value.toLowerCase()))};
+    // console.log(newlist);
+    console.log(clist);
+  }
 
   return (
     <div className='mt-8 m-5 h-14 flex justify-between align-middle'>
