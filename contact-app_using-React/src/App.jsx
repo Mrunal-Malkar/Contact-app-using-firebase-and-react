@@ -8,13 +8,15 @@ import { ModalContext } from './components/modalcontext'
 
 
 function App() {
+
   const [count, setCount] = useState(0)
   const [clist, setclist] = useState([{ name: "sampleName", id: "01" }]);
   const[isOpen,setIsOpen]=useState(false);
-  console.log("app.jsx")
+  const[input,setInput]=useState("");
+
   return (
     <>
-  <ModalContext.Provider value={{isOpen,setIsOpen,clist,setclist}}>
+  <ModalContext.Provider value={{isOpen,setIsOpen,clist,setclist,input,setInput}}>
   <Upper_area/>
   <Search_area/>
   <Contacts_area/>

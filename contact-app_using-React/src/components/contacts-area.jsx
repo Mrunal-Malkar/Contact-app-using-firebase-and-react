@@ -12,13 +12,12 @@ const Contacts_area = () => {
 
   const [clist, setclist] = useState([{ name: "sampleName", id: "01" }]);
   const {isOpen, setIsOpen} = useContext(ModalContext);
-  // const searchbar=useRef(ModalContext);
+  const {input}=useContext(ModalContext);
 
   const fetchdata = async () => {
     try {
       const contactref = await collection(db, "contacts");
       const contactsnap = await getDocs(contactref);
-      // console.log(searchbar.current.value);
       const contactlist = await contactsnap.docs.map((doc) => {
         return {
           id: doc.id,
@@ -32,10 +31,17 @@ const Contacts_area = () => {
     }
   }
 
+  const newclist=clist;
+  const newlist= input.length>0?clist.filter((list)=>list.name.toLowerCase().includes(input)):newclist;
+
 
   useEffect(() => {
     fetchdata();
-  }, [clist])
+  }, [])
+
+useEffect(() => {
+  fetchdata();
+},[clist])
 
 
   return (
@@ -44,11 +50,10 @@ const Contacts_area = () => {
       <ToastContainer/>
       <div className="hello flex flex-col mx-auto h-full w-full md:w-11/12">
         {/* map from here */}
-        {clist.length>0?(clist.map(list => {
-          return (
-            <Contact_card list={list} key={list.id} />
-          )
-        })):(
+        {input.length>0?(
+          newlist.map(list=><Contact_card list={list} key={list.id}/>)
+        ):clist.length>0?(clist.map(list => <Contact_card list={list} key={list.id} />
+        )):(
           <div className='flex self-center items-center justify-center h-[50%] w-full md:w-[25%] p-2'>
             <div className='m-auto ms-8 flex flex-row w-full h-2/6 justify-between'>
             <div className='w-1/4 h-full flex items-center justify-center text-6xl me-6 text-white'>
