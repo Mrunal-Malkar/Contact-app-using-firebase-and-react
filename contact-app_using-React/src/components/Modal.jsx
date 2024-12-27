@@ -35,7 +35,7 @@ const Modal = () => {
   return ReactDOM.createPortal(
     <>
       <Formik initialValues={{ name: '', email: '' }} validationSchema={validationSchemaRequirement} onSubmit={handleSubmit}>
-        <Form className="bg-white fixed bottom-0 overflow-hidden z-20 m-auto p-1 rounded-md flex justify-start h-[300px] w-full md:max-w-max-[700px] flex-col">
+        <Form className="bg-white fixed bottom-0 overflow-hidden z-20 m-auto p-1 rounded-md flex justify-start h-[300px] w-full md:max-w-max-[700px] xl:w-6/12 xl:ms-[25%] flex-col">
 
           <div className="h-[20%] flex items-center justify-between px- border-b-2 border-b-gray-400">
             <h1 className='text-3xl w-[90%] font-bold'>Add new contact</h1>

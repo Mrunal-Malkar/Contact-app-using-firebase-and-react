@@ -37,7 +37,7 @@ const Modal_update = ({list}) => {
   return ReactDOM.createPortal(
     <>
       <Formik initialValues={{ name:`${list.name}`, email: `${list.email}` }} onSubmit={handleSubmit} validationSchema={validationSchemaRequirement}>
-        <Form className="bg-white fixed bottom-0 overflow-hidden z-20 m-auto p-1 rounded-md flex justify-start h-[300px] w-full md:max-w-max-[700px] flex-col">
+        <Form className="bg-white fixed bottom-0 overflow-hidden z-20 m-auto p-1 rounded-md flex justify-start h-[300px] w-full md:max-w-max-[700px] flex-col xl:w-6/12 xl:ms-[25%]">
 
           <div className="h-[20%] flex items-center justify-between px- border-b-2 border-b-gray-400">
             <h1 className='text-3xl w-[90%] font-bold'>Edit contact</h1>

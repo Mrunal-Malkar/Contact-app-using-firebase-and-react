@@ -46,7 +46,7 @@ useEffect(() => {
 
   return (
     <div>
-    <div className="h-screen w-full flex justify-center">
+    <div className="h-screen w-full xl:w-2/4 flex justify-center xl:mx-auto">
       <ToastContainer/>
       <div className="hello flex flex-col mx-auto h-full w-full md:w-11/12">
         {/* map from here */}
