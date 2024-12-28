@@ -22,7 +22,7 @@ const Search_area = () => {
   return (
     <div className='mt-8 m-5 h-14 flex justify-between align-middle xl:w-2/4 xl:mx-auto'>
       <div className='h-full w-11/12 md:w-11/12 flex justify-center align-middle'>
-        <i class="fa-solid fa-magnifying-glass h-min text-xl mglass text-white"></i>
+        {/* <i class="fa-solid fa-magnifying-glass"></i> */}
         <input type="text" placeholder='search contacts' ref={searchbar} onChange={() => { show() }} className='ps-10 w-full border-white rounded-xl border-2 bg-gray-700 text-white' />
       </div>
       <div className='h-full w-1/12 flex justify-center align-middle rounded-3xl bg-white ms-2'>
