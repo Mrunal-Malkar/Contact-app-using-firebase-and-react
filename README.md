@@ -6,8 +6,8 @@
   <a href="#" target="_blank">
     <img alt="License: MIT lecense" src="https://img.shields.io/badge/License-MIT lecense-yellow.svg" />
   </a>
-  <a href="https://twitter.com/Mrunal\_Malkar" target="_blank">
-    <img alt="Twitter: Mrunal\_Malkar" src="https://img.shields.io/twitter/follow/Mrunal\_Malkar.svg?style=social" />
+  <a href="https://twitter.com/Mrunal_Malkar" target="_blank">
+    <img alt="Twitter: Mrunal_Malkar" src="https://img.shields.io/twitter/follow/Mrunal_Malkar.svg?style=social" />
   </a>
 </p>
 
